@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Website</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .quote-card {
+            width: 80%;
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .quote-text {
+            font-size: 24px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .quote-author {
+            font-size: 18px;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quote-card">
+        <div id="qut">
+            <p class="quote-text"></p>
+        </div>
+        <br>
+        <br>
+        <div id="aut">
+            <p class="quote-author"></p>
+        </div>
+        <button id="newQ" class="new-quote-btn">new quotes</button>
+        <button id="tweet" class="new-quote-btn"><img src="download.png" alt="tweet" height="20vw"
+                width="20vw"></button>
+    </div>
+
+    <script>
+        const Quotes = document.getElementById("qut");
+        const newQ = document.getElementById("newQ");
+        const aut = document.getElementById('aut')
+        const tweete = document.getElementById("tweet");
+
+        let realData = "";
+        let quoteData = "";
+
+        const tweetNow = () => {
+            let post = `https://twitter.com/intent/tweet?text=${quoteData.text} -By ${quoteData.author}`;
+            window.open(post)
+        }
+
+        const getNewQuote = () => {
+            let rnum = Math.floor(Math.random() * 10)
+            // console.log(realData[rnum].author)
+            quoteData = realData[rnum];
+
+            Quotes.innerHTML = `${realData[rnum].text}`
+            aut.innerHTML = `-By ${realData[rnum].author}`
+        }
+
+
+
+
+        const getQuotes = async () => {
+
+            const api = "https://type.fit/api/quotes";
+            try {
+                let data = await fetch(api)
+                realData = await data.json()
+                // console.log(realData)
+                getNewQuote();
+            } catch (error) {
+                console.log(error)
+            }
+
+        }
+
+
+
+
+
+        tweete.addEventListener("click", tweetNow)
+        newQ.addEventListener("click", getNewQuote)
+        getQuotes()
+
+    </script>
+</body>
+
+</html>
