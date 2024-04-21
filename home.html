@@ -4,18 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Website</title>
+    <title>Quotiful Journey</title>
     <link rel="stylesheet" href="home.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            /* display: flex; */
+            /* justify-content: center;
+            align-items: center;
+            height: 100vh; */
+            background-color: #f4f4f4;
+        }
+
+        .card {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
+            /* height: 100vh; */
+            margin-top: 12.5vw;
         }
 
         .quote-card {
@@ -43,20 +51,31 @@
 </head>
 
 <body>
-    <div class="quote-card">
-        <div id="qut">
-            <p class="quote-text"></p>
-        </div>
-        <br>
-        <br>
-        <div id="aut">
-            <p class="quote-author"></p>
-        </div>
-        <button id="newQ" class="new-quote-btn">new quotes</button>
-        <button id="tweet" class="new-quote-btn"><img src="download.png" alt="tweet" height="20vw"
-                width="20vw"></button>
-    </div>
 
+    <nav>
+        <div>
+            <h1 class="logo">Quotiful Journey</h1>
+        </div>
+    </nav>
+
+    <div class="card">
+        <div class="quote-card">
+            <div id="qut">
+                <p class="quote-text"></p>
+            </div>
+            <br>
+            <br>
+            <div id="aut">
+                <p class="quote-author"></p>
+            </div>
+            <button id="newQ" class="new-quote-btn">New Quotes</button>
+            <button id="tweet" class="new-quote-btn"><img src="download.png" alt="tweet" height="20vw"
+                    width="20vw"></button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 QuotifulJourney. All rights reserved.</p>
+    </footer>
     <script>
         const Quotes = document.getElementById("qut");
         const newQ = document.getElementById("newQ");
